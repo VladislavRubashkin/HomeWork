@@ -1,6 +1,6 @@
 package homeWork;
 
-public class HomeWork_Lessons3 {
+public class HomeWork_Lessons3and4 {
     public static void main(String[] args) {
 
         /*
