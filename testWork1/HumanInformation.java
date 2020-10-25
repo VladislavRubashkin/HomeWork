@@ -88,7 +88,7 @@ public class HumanInformation {
 
     @Override
     public String toString() {
-        return "HumanInformation{" +
+        return "Данные" +
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", age=" + age +
