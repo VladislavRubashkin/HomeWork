@@ -12,7 +12,7 @@ public class SeasonTicket {
     private SeasonTicketType seasonTicketType;
     private  LocalDateTime currentDate;
     private  LocalDateTime endingDate;
-//    protected ZoneType[] zoneType; // [GYM,POOL]
+    protected static ZoneType[] zoneType = {ZoneType.GYM, ZoneType.POOL, ZoneType.GROUPClass};
 
     private static SeasonTicketType[] seasonTicketTypes = {SeasonTicketType.SINGLE,
             SeasonTicketType.DAYTIME, SeasonTicketType.FULLTIME};
@@ -39,7 +39,7 @@ public class SeasonTicket {
     }
 
     public void setSeasonTicketType(SeasonTicketType seasonTicketType) {
-        this.seasonTicketType = seasonTicketTypes[(int) (Math.random() * seasonTicketTypes.length - 1)];
+        this.seasonTicketType = seasonTicketType;
     }
 
     public LocalDateTime getCurrentDate() {
@@ -55,66 +55,24 @@ public class SeasonTicket {
     }
 
     public void setEndingDate(LocalDateTime endingDate) {
-        if (seasonTicketType == SeasonTicketType.SINGLE) {
-            this.endingDate = currentDate.plusDays(1);
-        }
-        if (seasonTicketType == SeasonTicketType.DAYTIME) {
-            this.endingDate = currentDate.plusYears(1);
-        }
-        if (seasonTicketType == SeasonTicketType.FULLTIME) {
-            this.endingDate = currentDate.plusYears(1);
-        }
+        this.endingDate = endingDate;
     }
-//    public SeasonTicket(HumanInformation client, SeasonTicketType[] seasonTicketTypes){
-//        getClient();
-//        getSeasonTicketTypes();
-//    }
-//
-//
-//    public static HumanInformation getClient() {
-//        return client;
-//    }
-//
-//    public static void setClient(HumanInformation client) {
-//        SeasonTicket.client = client;
-//    }
-//
-//    public static LocalDateTime getCurrentDate() {
-//        return currentDate;
-//    }
-//
-//    public static void setCurrentDate(LocalDateTime currentDate) {
-//        SeasonTicket.currentDate = currentDate;
-//    }
-//
-//    public static LocalDateTime getEndingDate() {
-//        return endingDate;
-//    }
-//
-//    public static void setEndingDate(LocalDateTime endingDate) {
-//        SeasonTicket.endingDate = endingDate;
-//    }
-//
-//    public static SeasonTicketType[] getSeasonTicketTypes() {
-//        return seasonTicketTypes;
-//    }
-//
-//    public static void setSeasonTicketTypes(SeasonTicketType[] seasonTicketTypes) {
-//        SeasonTicket.seasonTicketTypes = seasonTicketTypes;
-//    }
-//
-//
-//    public static SeasonTicket addSeasonTicket() {
-//        SeasonTicket ticket = new SeasonTicket(HumanInformation.addHumanInformation(),
-//                seasonTicketTypes[(int) (Math.random() * 3)];
-//
-//        if (ticket.seasonTicketType == SINGLE) {
-//            ticket.endingDate = ticket.currentDate.plusDays(1));
-//        } else if (ticket.seasonTicketType == SeasonTicketType.DAYTIME ||
-//                ticket.seasonTicketType == SeasonTicketType.FULLTIME)
-//            ticket.endingDate = ticket.currentDate.plusYears(1);
-//        return ticket;
-//    }
+    public SeasonTicket(HumanInformation client, SeasonTicketType seasonTicketType){
+        this.client = client;
+        this.seasonTicketType = seasonTicketType;
+    }
+
+    public static SeasonTicket addSeasonTicket() {
+        SeasonTicket ticket = new SeasonTicket(HumanInformation.addHumanInformation(),
+                seasonTicketTypes[(int) (Math.random() * seasonTicketTypes.length - 1)]);
+        ticket.setCurrentDate(LocalDateTime.now());
+        if (ticket.seasonTicketType == SINGLE) {
+            ticket.endingDate = ticket.currentDate.plusDays(1);
+        } else if (ticket.seasonTicketType == SeasonTicketType.DAYTIME ||
+                ticket.seasonTicketType == SeasonTicketType.FULLTIME)
+            ticket.endingDate = ticket.currentDate.plusYears(1);
+        return ticket;
+    }
 
     @Override
     public String toString() {

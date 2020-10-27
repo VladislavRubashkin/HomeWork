@@ -7,6 +7,7 @@ public class Logger {
 
 
     public static void getClientInfo(SeasonTicket ticket){
+
         System.out.println(ticket.toString());
     }
 }

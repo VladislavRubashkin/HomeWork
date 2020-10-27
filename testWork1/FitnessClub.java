@@ -18,6 +18,7 @@ public class FitnessClub {
 
 
     public void addFitness(SeasonTicket ticket, ZoneType zone){
+        System.out.println(!isClosed());
         LocalTime localTime = LocalTime.now();
 //        LocalDate today = LocalDate.now();
         if (!isClosed()){
@@ -27,10 +28,18 @@ public class FitnessClub {
             if (ticket.getSeasonTicketType() == DAYTIME && zone == ZoneType.POOL &&
                     localTime.isAfter(LocalTime.of(16,00))){
                 System.out.println("Дневной абонемент не позволяет посещать бассейн и ограничен по времени до 16:00");
-            }else {
-                addGim(ticket);
-                addGroupClass(ticket);
-                addPool(ticket);
+            }
+            else {
+                System.out.println("Add");
+                if (zone == ZoneType.GYM){
+                    addGim(ticket);
+                }
+                if (zone == ZoneType.POOL){
+                    addPool(ticket);
+                }
+                if (zone == ZoneType.GROUPClass){
+                    addGroupClass(ticket);
+                }
 
             }
         }
@@ -39,14 +48,12 @@ public class FitnessClub {
     private void addGim(SeasonTicket ticket){
         for (int i = 0; i < gym.length; i++) {
             if (gym[i] == null){
-                gym[i] = new SeasonTicket(ticket.getClient(), ticket.getSeasonTicketType(),
-                        ticket.getCurrentDate(),ticket.getEndingDate());
+                gym[i] = ticket;
                 Logger.getClientInfo(ticket);
                 return;
             }
         }
          System.out.println("Тренажерный зал заполнен");
-        return;
     }
 
     private void addPool(SeasonTicket ticket){
@@ -60,7 +67,6 @@ public class FitnessClub {
             }
         }
         System.out.println("Бассейн заполнен");
-        return;
     }
 
     private void addGroupClass(SeasonTicket ticket){
@@ -73,19 +79,18 @@ public class FitnessClub {
             }
         }
         System.out.println("Групповые занятия заполнены");
-        return;
     }
 
     public boolean isClosed(){
         LocalTime localTime = LocalTime.now();
-        if (localTime.isBefore(LocalTime.of(8,00)) ||
+        if (localTime.isBefore(LocalTime.of(07,00)) ||
                 localTime.isAfter(LocalTime.of(22,00))){
             Arrays.fill(gym, null);
             Arrays.fill(pool, null);
             Arrays.fill(groupClass,null);
             System.out.println("Клуб закрыт, приходите завтра");
         }
-        return true;
+        return false;
     }
 
     public String getFitnessInfo() {
