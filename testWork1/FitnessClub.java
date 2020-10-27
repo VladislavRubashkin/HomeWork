@@ -17,6 +17,7 @@ public class FitnessClub {
     private SeasonTicket[] groupClass = new SeasonTicket[20];
 
 
+
     public void addFitness(SeasonTicket ticket, ZoneType zone){
         System.out.println(!isClosed());
         LocalTime localTime = LocalTime.now();
@@ -24,13 +25,14 @@ public class FitnessClub {
         if (!isClosed()){
             if (ticket.getSeasonTicketType() == SINGLE  && zone == ZoneType.GROUPClass){
                 System.out.println("По Вашему аббонементу групповые занятия не доступны ");
+                return;
             }
             if (ticket.getSeasonTicketType() == DAYTIME && zone == ZoneType.POOL &&
                     localTime.isAfter(LocalTime.of(16,00))){
                 System.out.println("Дневной абонемент не позволяет посещать бассейн и ограничен по времени до 16:00");
             }
             else {
-                System.out.println("Add");
+//                System.out.println("Add");
                 if (zone == ZoneType.GYM){
                     addGim(ticket);
                 }
