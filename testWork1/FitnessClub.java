@@ -57,12 +57,9 @@ public class FitnessClub {
     }
 
     private void addPool(SeasonTicket ticket){
-
         for (int i = 0; i < pool.length; i++) {
             if (pool[i] == null){
-                pool[i] = new SeasonTicket(ticket.getClient(), ticket.getSeasonTicketType(),
-                        ticket.getCurrentDate(),ticket.getEndingDate());
-                Logger.getClientInfo(ticket);
+                pool[i] = ticket;
                 return;
             }
         }
@@ -72,9 +69,7 @@ public class FitnessClub {
     private void addGroupClass(SeasonTicket ticket){
         for (int i = 0; i < groupClass.length; i++) {
             if (groupClass[i] == null){
-                groupClass[i] = new SeasonTicket(ticket.getClient(), ticket.getSeasonTicketType(),
-                        ticket.getCurrentDate(),ticket.getEndingDate());;
-                Logger.getClientInfo(ticket);
+                groupClass[i] = ticket;
                 return;
             }
         }
