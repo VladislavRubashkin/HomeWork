@@ -8,14 +8,12 @@ public class HumanInformation {
     private String name;
     private String surname;
     private  int age;
-    private static String[] names = {"Петя","Саша","Маша","Оля","Юра","Слава","Иван","Юля","Алёна"};
-    private static String[] surNames = {"Иванов","Петров","Сидоров","Крюков","Селезнев","Сергеев",
-            "Лобов","Молодцов","Карпов"};
+
 
     public  HumanInformation(String name, String surname, int age){
-        this.name = name;
-        this.surname = surname;
-        this.age = age;
+        setName(name);
+        setSurname(surname);
+        setAge(age);
     }
 
     public String getName() {
@@ -53,6 +51,9 @@ public class HumanInformation {
 
 
     public static HumanInformation addHumanInformation() {
+          String[] names = {"Петя","Саша","Маша","Оля","Юра","Слава","Иван","Юля","Алёна"};
+          String[] surNames = {"Иванов","Петров","Сидоров","Крюков","Селезнев","Сергеев",
+                "Лобов","Молодцов","Карпов"};
         HumanInformation humanInformation = new HumanInformation(
                 names[(int) (Math.random() * names.length)],
                 surNames[(int) (Math.random() * surNames.length)],

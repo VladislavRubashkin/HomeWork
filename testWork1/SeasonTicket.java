@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.chrono.ChronoLocalDate;
 
-import static homeWork.testWork1.SeasonTicketType.SINGLE;
+//import static homeWork.testWork1.SeasonTicketType.SINGLE;
 
 public class SeasonTicket {
     private  HumanInformation client;
@@ -66,7 +66,7 @@ public class SeasonTicket {
         SeasonTicket ticket = new SeasonTicket(HumanInformation.addHumanInformation(),
                 seasonTicketTypes[(int) (Math.random() * seasonTicketTypes.length - 1)]);
         ticket.setCurrentDate(LocalDateTime.now());
-        if (ticket.seasonTicketType == SINGLE) {
+        if (ticket.seasonTicketType == SeasonTicketType.SINGLE) {
             ticket.endingDate = ticket.currentDate.plusDays(1);
         } else if (ticket.seasonTicketType == SeasonTicketType.DAYTIME ||
                 ticket.seasonTicketType == SeasonTicketType.FULLTIME)
