@@ -1,4 +1,4 @@
-package homeWork.Lessons11.SolarSystem;
+package homeWork.lessons11.solarSystem;
 
 public class Application {
     /*

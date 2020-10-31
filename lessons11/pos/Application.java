@@ -1,6 +1,4 @@
-package homeWork.Lessons11.Pos;
-
-import homeWork.Lessons7.School;
+package homeWork.lessons11.pos;
 
 import java.util.Arrays;
 import java.util.Scanner;

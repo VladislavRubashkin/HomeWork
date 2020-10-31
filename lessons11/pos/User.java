@@ -1,4 +1,4 @@
-package homeWork.Lessons11.Pos;
+package homeWork.lessons11.pos;
 
 public class User {
 
