@@ -1,4 +1,4 @@
-package homeWork.Lessons6.Climbers;
+package homeWork.lessons6.climbers;
 
 /*
 Описать объектную модель Альпинист, Гора, Группа для восхождения на гору.

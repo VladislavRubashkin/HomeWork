@@ -1,4 +1,4 @@
-package homeWork.Lessons6.ProductList;
+package homeWork.lessons6.productList;
 
 public class NutritionalValue {
 
